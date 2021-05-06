@@ -1,6 +1,6 @@
 import React from "react";
 import "./style/input.css";
-export default function Input({frequency,classes,setStateC,setStateF}) {
+export default function Input({frequency,classes,setStateC,setStateF,send}) {
     
   return (
     <div className="container">
@@ -15,8 +15,8 @@ export default function Input({frequency,classes,setStateC,setStateF}) {
         </h3>
         <div className="inputs-area">
           {" "}
-          <textarea onChange={(e)=>{setStateC(e.target.value)}} className="input" placeholder="10-20,20-30....">
-            {classes}
+          <textarea value={classes} onChange={(e)=>{setStateC(e.target.value)}} className="input" placeholder="10-20,20-30....">
+            
           </textarea>{" "}
         </div>
         <h3 className="header small">
@@ -24,11 +24,11 @@ export default function Input({frequency,classes,setStateC,setStateF}) {
         </h3>
         <div className="inputs-area">
           {" "}
-          <textarea onChange={(e)=>{setStateF(e.target.value)}} className="input" placeholder="5,8,7,10,2,1,3....">
-            {frequency}
+          <textarea value={frequency} onChange={(e)=>{setStateF(e.target.value)}} className="input" placeholder="5,8,7,10,2,1,3....">
+            
           </textarea>{" "}
         </div>
-        <button className="btn-send">Send</button>
+        <button onClick={()=>{send()}} className="btn-send">Send</button>
       </form>
     </div>
   );
