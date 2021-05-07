@@ -21,7 +21,7 @@
   }
   
   #customers td, #customers th {
-    border: 1px solid rgb(24, 24, 24);
+    border: 1px solid rgb(31, 47, 82);
     padding: 8px;
   }
   
@@ -35,4 +35,9 @@
     text-align: left;
     background-color: #1f1f1f;
     color: white;
+  }
+  .answers{
+    margin-top:2em;
+    margin-bottom:5rem;
+    margin-left: 3rem;
   }
