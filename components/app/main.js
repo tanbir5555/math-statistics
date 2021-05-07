@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Table from "./components/table";
 import Input from "./components/input";
 function Main() {
-  let [classes, setClasses] = useState("10-20,20-30,30-40,40-50,50-60,60-70,70-200");
+  let [inputClasses, setInputClasses] = useState("10-20,20-30,30-40,40-50,50-60,60-70,70-200");
+  let [inputFrequency, setInputFrequency] = useState("15,12,13,18,17,27,10");
+  let [classes, setClasses] = useState("");
   let [highClass, setHighClass] = useState("");
   let [lowClass, setLowClass] = useState("");
-  let [frequency, setFrequency] = useState("15,12,13,18,17,27,10");
+  let [frequency, setFrequency] = useState("");
   
   let [D_ , setD]=useState("")
   let [A_ , setA]=useState("")
@@ -37,23 +39,33 @@ function Main() {
 
 
   function updateClasses(cla) {
-    setClasses(() => {
+    setInputClasses(() => {
       return cla;
     });
-    setReady(false)
+    
+    clearVal()
   }
 
   function updateFrequency(fre) {
-    setFrequency(() => {
+    setInputFrequency(() => {
       return fre;
     });
-    setReady(false)
+    
+    clearVal()
   }
   function clearAll(){
+    setInputFrequency("")
+    setInputClasses("")
+    clearVal()
+    
+    
+  }
+  function clearVal(){
+    setFrequency()
     setClasses("")
     setHighClass("")
     setLowClass("")
-    setFrequency("")
+    setReady(false)
     setD("")
     setA("")
     setFreXD("")
@@ -71,13 +83,14 @@ function Main() {
     setSumFD("")
     setX_("")
     setX_2("")
-    setReady(false)
   }
   function classReady() {
+    clearVal()
     //class work //class work//class work//class work//class work
     //console.log(classes);
     //console.log(frequency);
-    let viewClasses = classes.split(",");
+    // console.log(classes)
+    let viewClasses = inputClasses.split(",");
 
     setClasses(viewClasses)
     //setting class view
@@ -98,7 +111,7 @@ function Main() {
     });
     //class work//class work//class work//class work//class work
 
-    let numFre = frequency.split(",");
+    let numFre = inputFrequency.split(",");
     numFre = numFre.map((value) => parseInt(value));
 
     setFrequency(() => {
@@ -264,8 +277,8 @@ setFrequencyDensity(()=>{
   return (
     <div className="">
       <Input
-        frequency={frequency}
-        classes={classes}
+        frequency={inputFrequency}
+        classes={inputClasses}
         setStateF={updateFrequency}
         setStateC={updateClasses}
         send={classReady}

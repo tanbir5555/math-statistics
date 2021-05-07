@@ -61,13 +61,13 @@ export default function Table({CAplus,x_,x_2,sumFD,FreXD,D_,A_,sumFixi,frequency
       </table>
 
       <div className='answers'>  
-      {CAplus?<div className=''><strong className=''> Range (C): </strong> {classRange[0]}  </div>:null}
-      <div className=''><strong className=''> A : </strong> {A_}  </div>
-      <div className=''><strong className=''>Sum of Frequency (N) : </strong> {frequencyTotal}  </div>
-      <div className=''><strong className=''> Sum of Frequency & d (x) : </strong> {sumFD}  </div>
-      <div className=''><strong className=''> Sum of Frequency & midPoints (x) (sum fixi) : </strong> {sumFixi}  </div>
-      <div className=''><strong className=''> x_ (sortMethod) : </strong> {x_}  </div>
-      <div className=''><strong className=''> x_ (MainMethod) : </strong> {x_2} </div>  
+      {CAplus?<div className='ans'><strong className='strong'> Range (C): </strong> {classRange[0]}  </div>:null}
+      <div className='ans'><strong className='strong'> A : </strong> {A_}  </div>
+      <div className='ans'><strong className='strong'>Sum of Frequency (N) : </strong> {frequencyTotal}  </div>
+      <div className='ans'><strong className='strong'> Sum of Frequency & d (x) : </strong> {sumFD}  </div>
+      <div className='ans'><strong className='strong'> Sum of Frequency & midPoints (x) (sum fixi) : </strong> {sumFixi}  </div>
+      <div className='ans'>{CAplus?<strong className='strong'> x_=A+(sumFd/N)*c (sortMethod) : </strong>:<strong className='strong'> x_=A+(sumFd/N) (sortMethod) : </strong>} {x_}  </div>
+      <div className='ans'><strong className='strong'> x_=sumFixi/N (MainMethod) : </strong> {x_2} </div>  
        </div>
     </div>
   );
