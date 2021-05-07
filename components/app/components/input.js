@@ -1,10 +1,11 @@
 import React from "react";
 import "./style/input.css";
-export default function Input({frequency,classes,setStateC,setStateF,send}) {
+export default function Input({clearAll,frequency,classes,setStateC,setStateF,send}) {
     
   return (
     <div className="container">
       <h3 className="header">Making Statistics Math App</h3>
+      <button onClick={()=>{clearAll()}} className='btn-clear'>  Clear </button>
       <form
         onSubmit={(e) => {
           e.preventDefault();

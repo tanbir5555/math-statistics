@@ -67,3 +67,18 @@ strong{
     background-color:rgba(36, 36, 36, 0.8);
     cursor: pointer;
 }
+.btn-clear{
+  padding:0.8em 2em;font-size: 1.2em;
+  color:rgba(255, 0, 0, 0.8);
+  border-radius: 8px;
+  margin:36px 29px; 
+  background-color:rgba(0,0,0,0.80);
+  /* border:1px solid rgba(255, 0, 0, 0.8); */
+  box-shadow: 1px 8px 19px rgba(0,0,0,0.80) ;
+  font-weight: 500;
+}
+.btn-clear:hover,.btn-clear:focus{
+  color:rgb(255, 255, 255); 
+  background-color:rgba(36, 36, 36, 0.8);
+  cursor: pointer;
+}

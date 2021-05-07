@@ -6,7 +6,7 @@ function Main() {
   let [highClass, setHighClass] = useState("");
   let [lowClass, setLowClass] = useState("");
   let [frequency, setFrequency] = useState("15,12,13,18,17,27,10");
-
+  
   let [D_ , setD]=useState("")
   let [A_ , setA]=useState("")
   let [FreXD,setFreXD]=useState("")
@@ -21,7 +21,7 @@ function Main() {
   let [classRange,setClassRange]=useState("")
   let [PercentageFrequency,setPercentageFrequency]=useState("")
 
-
+  
   //sum
   let [frequencyTotal,setFrequencyTotal]=useState('')
   let [sumFixi,setSumFixi]=useState("")
@@ -33,6 +33,8 @@ function Main() {
 
   let [ready, setReady]=useState(false);
   
+
+
 
   function updateClasses(cla) {
     setClasses(() => {
@@ -47,7 +49,30 @@ function Main() {
     });
     setReady(false)
   }
-
+  function clearAll(){
+    setClasses("")
+    setHighClass("")
+    setLowClass("")
+    setFrequency("")
+    setD("")
+    setA("")
+    setFreXD("")
+    setCAplus("")
+    setMidPoints("")
+    setFreXmid("")
+    setLessCumulativeFrequency("")
+    setGreaterCumulativeFrequency("")
+    setFrequencyDensity("")
+    setRelativeFrequency("")
+    setClassRange("")
+    setPercentageFrequency("")
+    setFrequencyTotal("")
+    setSumFixi("")
+    setSumFD("")
+    setX_("")
+    setX_2("")
+    setReady(false)
+  }
   function classReady() {
     //class work //class work//class work//class work//class work
     console.log(classes);
@@ -244,6 +269,7 @@ console.log("setFrequencyDensity : ", FrequencyD)
         setStateF={updateFrequency}
         setStateC={updateClasses}
         send={classReady}
+        clearAll={clearAll}
       />
       {ready?<Table
         lcf={lessCumulativeFrequency}

@@ -22,7 +22,7 @@ export default function Table({CAplus,x_,x_2,sumFD,FreXD,D_,A_,sumFixi,frequency
           <td><strong>RelativeFrequency</strong></td>
           <td><strong>PercentageFrequency</strong></td>
           {CAplus?<td><strong>d=(x-{A_})/range</strong></td>:<td><strong>d=(x-{A_})</strong></td>}
-
+    
           <td><strong>Frequency*d</strong></td>
           <td><strong>Frequency*middlePoint</strong></td>
 
