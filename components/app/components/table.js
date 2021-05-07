@@ -8,23 +8,23 @@ export default function Table({CAplus,x_,x_2,sumFD,FreXD,D_,A_,sumFixi,frequency
           
        
         <tr>
-          <td><strong>classes</strong></td>
-          <td><strong>frequency</strong></td>
-          <td><strong>Less Than  Cumulative Frequency </strong></td>
-          <td><strong>Greater Than  Cumulative Frequency</strong></td>
-          <td><strong>highClass</strong></td>
-          <td><strong>lowClass</strong></td>
-          <td><strong>midPoints</strong></td>
+          <td><strong>Classes</strong></td>
+          <td><strong>Frequency (fi)</strong></td>
+          <td><strong>Less Than Cumulative Frequency (L.c.f)</strong></td>
+          <td><strong>Greater Than Cumulative Frequency (M.c.f)</strong></td>
+          <td><strong>Upper Class Limit (u/h)</strong></td>
+          <td><strong>Lower Class Limit (s/L)</strong></td>
+          <td><strong>Middle Points (xi)</strong></td>
 
-          <td><strong>classRange</strong></td>
-          <td><strong>fixi</strong></td>
-          <td><strong>frequencyDensity</strong></td>
-          <td><strong>RelativeFrequency</strong></td>
-          <td><strong>PercentageFrequency</strong></td>
+          <td><strong>Class Range (c)</strong></td>
+         
+          <td><strong>Frequency Density (fi/c)</strong></td>
+          <td><strong>Relative Frequency (fi/N)</strong></td>
+          <td><strong>Percentage Frequency (fi/N)*100%</strong></td>
           {CAplus?<td><strong>d=(x-{A_})/range</strong></td>:<td><strong>d=(x-{A_})</strong></td>}
-    
-          <td><strong>Frequency*d</strong></td>
-          <td><strong>Frequency*middlePoint</strong></td>
+
+          <td><strong>Frequency * d</strong></td>
+          <td><strong>Frequency * Mid Points (fixi)</strong></td>
 
 
           {/* <td><strong></strong></td> */}
@@ -43,7 +43,7 @@ export default function Table({CAplus,x_,x_2,sumFD,FreXD,D_,A_,sumFixi,frequency
           <td>{midPoints[index]}</td>
 
           <td>{classRange[index]}</td>
-          <td>{freXmid[index]}</td>
+          
           <td>{frequencyDensity[index]}</td>
           <td>{RelativeFrequency[index]}</td>
           <td>{PercentageFrequency[index]}</td>

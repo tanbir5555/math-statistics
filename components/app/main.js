@@ -75,8 +75,8 @@ function Main() {
   }
   function classReady() {
     //class work //class work//class work//class work//class work
-    console.log(classes);
-    console.log(frequency);
+    //console.log(classes);
+    //console.log(frequency);
     let viewClasses = classes.split(",");
 
     setClasses(viewClasses)
@@ -91,7 +91,7 @@ function Main() {
     let middlePoint = lowClass.map((value, index) => {
       return (value + highClass[index]) / 2;
     });
-    console.log(middlePoint);
+    //console.log(middlePoint);
 
     setMidPoints(() => {
       return middlePoint;
@@ -107,7 +107,7 @@ function Main() {
     let totalF=0;
     numFre.map((value)=>totalF+=value)
     setFrequencyTotal(totalF)
-    console.log("frequencyTotal : ",totalF)
+    //console.log("frequencyTotal : ",totalF)
 
     //class range
     let classR=lowClass.map((value,index)=>highClass[index]-value)
@@ -130,7 +130,7 @@ function Main() {
     })
     setLessCumulativeFrequency(lessThanCF)
 
-    console.log("lessThanCF :",lessThanCF)
+    //console.log("lessThanCF :",lessThanCF)
 
 
     
@@ -150,17 +150,17 @@ function Main() {
     greaterThanCF=greaterThanCF.reverse()
     setGreaterCumulativeFrequency(greaterThanCF)
 
-    console.log("greaterThanCF :",greaterThanCF)
+    //console.log("greaterThanCF :",greaterThanCF)
 //successful
 numFre=numFre.reverse()
 let FrequencyD=numFre.map((value,index)=>{
-  return (value/classR[index])
+  return (value/classR[index]).toFixed(3)
 })
 setFrequencyDensity(()=>{
   return FrequencyD
 })
 
-console.log("setFrequencyDensity : ", FrequencyD)
+//console.log("setFrequencyDensity : ", FrequencyD)
 
 
     //frequency work
@@ -169,11 +169,11 @@ console.log("setFrequencyDensity : ", FrequencyD)
     //frequency work
     let RelativeF=numFre.map((value)=>(value/totalF).toFixed(3))
     setRelativeFrequency(RelativeF)
-    console.log("RelativeF :",RelativeF)
+    //console.log("RelativeF :",RelativeF)
 
     let percentageF=RelativeF.map((value=>(value*100).toFixed(2)+"%"))
     setPercentageFrequency(percentageF)
-    console.log("setPercentageFrequency :",percentageF)
+    //console.log("setPercentageFrequency :",percentageF)
 
     let theA=middlePoint[parseInt((middlePoint.length)/2)]
     setA(theA)
@@ -194,10 +194,10 @@ console.log("setFrequencyDensity : ", FrequencyD)
 
     let theD=middlePoint.map((value)=>{
       if(CPlus){
-        console.log("same distance range")
+        //console.log("same distance range")
         return ((value-theA)/classR[0])
       }else{
-        console.log("NOT same distance range")
+        //console.log("NOT same distance range")
         return (value-theA)
       }
       
@@ -237,14 +237,14 @@ console.log("setFrequencyDensity : ", FrequencyD)
     let TheX_;
     if(CPlus){
       TheX_=theA+(sumFrequencyXD/totalF)*classR[0]
-      console.log("CPlus : True")
+      //console.log("CPlus : True")
     }else{
       TheX_=theA+(sumFrequencyXD/totalF)
-      console.log("CPlus : false")
+      //console.log("CPlus : false")
     }
       
     setX_(TheX_)
-    console.log(TheX_)
+    //console.log(TheX_)
 
     //Real method
 
