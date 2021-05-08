@@ -2,17 +2,26 @@ import React, { useState } from "react";
 import Table from "./components/table";
 import Input from "./components/input";
 import InputType2 from "./components/inputType2";
+import Header from "./components/header"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function Main() {
+  let [mode,setMode]=useState(true)
+
   let [inputClasses, setInputClasses] = useState(
     "10-20,20-30,30-40,40-50,50-60,60-70,70-200"
   );
-  let [inputClasses2, setInputClasses2] = useState("5,6,9,5,7,8,5");
+  let [inputClasses2, setInputClasses2] = useState("5,6,9,5,7,8,5,15,20,44,45,35,30,32,50,52,15,11,33,44,45,40,60,70,65");
+  let [splitInputClass2,setSplitInputClass2]=useState("")
   let [processDone, setProcessDone] = useState(false);
   let [startPoint,setStartPoint]=useState("")
   let [endPoint,setEndPoint]=useState("")
   let [inputRange,setInputRange]=useState("")
+  
+  let [viewSmallest,setViewSmallest]=useState("")
+  let [viewHighest,setViewHighest]=useState("")
+
+
 
   let [inputFrequency, setInputFrequency] = useState("15,12,13,18,17,27,10");
 
@@ -58,29 +67,48 @@ function Main() {
 
   function updateClasses2(cla) {
     setInputClasses2(cla);
+    setReady(false);
+    setProcessDone(false)
   }
   function updateInputRange(ran){
     setInputRange(ran)
+    setReady(false);
   }
   function updateStart(st){
     setStartPoint(st)
+    setReady(false);
   }
   function updateEnd(en){
     setEndPoint(en)
+    setReady(false);
   }
   function process() {
     let classesNew = inputClasses2.split(",");
+    console.log(classesNew.length)
     classesNew = classesNew.map((value) => parseInt(value));
+    setSplitInputClass2(classesNew)
     let sortClass = classesNew.sort(function (a, b) {
       return a - b;
     });
     let maxValClass = sortClass[sortClass.length - 1];
     let minValClass = sortClass[0];
-    alert("min : " + minValClass + " max : " + maxValClass);
-    let range = prompt("what would be the range of each class ?");
-    let start = prompt("where to Start ?");
+    setViewSmallest(minValClass)
+    setViewHighest(maxValClass)
+    // alert("min : " + minValClass + " max : " + maxValClass);
+    
+    setProcessDone(true)
+    
+    
+    // console.log(rowCount())
+
+  }
+
+  function send2(){
+    let classesNew =splitInputClass2
+    let range = inputRange;
+    let start = startPoint;
     start = parseFloat(start);
-    let end = prompt("where to end ?");
+    let end = endPoint;
     end = parseFloat(end);
     range = parseFloat(range);
 
@@ -101,7 +129,7 @@ function Main() {
       lowerClass.push(start + x * range);
       upperClass.push(start + x * range + range);
       let condition=classesNew.filter((e)=>{
-        return e>lowerClass[x] && e<upperClass[x];
+        return e>=lowerClass[x] && e<upperClass[x];
       })
       // let howMany=0
       // classesNew.map((value)=>{
@@ -127,11 +155,9 @@ function Main() {
     });
     console.log(classStructure);
     setClasses(classStructure)
-    
-    General(classStructure,Frequency)
-    setProcessDone(false)
-    // console.log(rowCount())
 
+    General(classStructure,Frequency)
+   
   }
 
   function updateFrequency(fre) {
@@ -145,8 +171,13 @@ function Main() {
     setInputFrequency("");
     setInputClasses("");
     clearVal();
+    setProcessDone(false)
   }
   function clearVal() {
+    setProcessDone(false)
+    setEndPoint("")
+    setStartPoint("")
+    setInputRange("")
     setInputClasses2("");
     setFrequency("");
     setClasses("");
@@ -205,7 +236,7 @@ function Main() {
 
     let numFre = FREQUENCY;
     numFre = numFre.map((value) => parseInt(value));
-
+    
     setFrequency(() => {
       return numFre;
     });
@@ -355,6 +386,7 @@ function Main() {
   return (
     <div className="">
       <Router>
+        <Header mode={mode} setMode={setMode}/>
         <Switch>
           <Route exact path="/React-statistics-table-test">
             <Input
@@ -372,7 +404,7 @@ function Main() {
               classes={inputClasses2}
              
               setStateC={updateClasses2}
-              send={classReady}
+              send={send2}
               clearAll={clearAll}
               process={process}
               processDone={processDone}
@@ -384,6 +416,9 @@ function Main() {
               updateStart={updateStart}
               endPoint={endPoint}
               updateEnd={updateEnd}
+
+              viewSmallest={viewSmallest}
+              viewHighest={viewHighest}
 
             />
           </Route>

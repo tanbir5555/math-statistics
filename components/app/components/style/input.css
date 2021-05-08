@@ -82,3 +82,6 @@ strong{
   background-color:rgba(36, 36, 36, 0.8);
   cursor: pointer;
 }
+*{
+  text-decoration:none
+}
