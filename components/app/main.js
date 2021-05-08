@@ -3,7 +3,7 @@ import Table from "./components/table";
 import Input from "./components/input";
 import InputType2 from "./components/inputType2";
 import Header from "./components/header"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+//import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function Main() {
   let [mode,setMode]=useState(true)
@@ -84,7 +84,7 @@ function Main() {
   }
   function process() {
     let classesNew = inputClasses2.split(",");
-    console.log(classesNew.length)
+    //console.log(classesNew.length)
     classesNew = classesNew.map((value) => parseInt(value));
     setSplitInputClass2(classesNew)
     let sortClass = classesNew.sort(function (a, b) {
@@ -99,7 +99,7 @@ function Main() {
     setProcessDone(true)
     
     
-    // console.log(rowCount())
+    // //console.log(rowCount())
 
   }
 
@@ -119,7 +119,7 @@ function Main() {
         total += range;
         numCounct += 1;
       }
-      //console.log(numCounct)
+      ////console.log(numCounct)
       return numCounct;
     };
     let upperClass = [],
@@ -141,19 +141,19 @@ function Main() {
       //   }
       // })
       Frequency.push(condition.length)
-      console.log("condition :",condition)
+      //console.log("condition :",condition)
     }
     
     setFrequency(Frequency)
-    console.log(lowerClass);
-    console.log(upperClass);
+    //console.log(lowerClass);
+    //console.log(upperClass);
 
     let classStructure = upperClass.map((value, index) => {
       let StringLow = lowerClass[index].toString();
       let StringHigh = value.toString();
       return StringLow + "-" + StringHigh;
     });
-    console.log(classStructure);
+    //console.log(classStructure);
     setClasses(classStructure)
 
     General(classStructure,Frequency)
@@ -205,9 +205,9 @@ function Main() {
   function classReady() {
     clearVal();
     //class work //class work//class work//class work//class work
-    //console.log(classes);
-    //console.log(frequency);
-    // console.log(classes)
+    ////console.log(classes);
+    ////console.log(frequency);
+    // //console.log(classes)
     let viewClasses = inputClasses.split(",");
 
     setClasses(viewClasses);
@@ -227,7 +227,7 @@ function Main() {
     let middlePoint = lowClass.map((value, index) => {
       return (value + highClass[index]) / 2;
     });
-    //console.log(middlePoint);
+    ////console.log(middlePoint);
 
     setMidPoints(() => {
       return middlePoint;
@@ -244,7 +244,7 @@ function Main() {
     let totalF = 0;
     numFre.map((value) => (totalF += value));
     setFrequencyTotal(totalF);
-    //console.log("frequencyTotal : ",totalF)
+    ////console.log("frequencyTotal : ",totalF)
 
     //class range
     let classR = lowClass.map((value, index) => highClass[index] - value);
@@ -265,7 +265,7 @@ function Main() {
     });
     setLessCumulativeFrequency(lessThanCF);
 
-    //console.log("lessThanCF :",lessThanCF)
+    ////console.log("lessThanCF :",lessThanCF)
 
     //Less Than Cumulative Frequency
 
@@ -283,7 +283,7 @@ function Main() {
     greaterThanCF = greaterThanCF.reverse();
     setGreaterCumulativeFrequency(greaterThanCF);
 
-    //console.log("greaterThanCF :",greaterThanCF)
+    ////console.log("greaterThanCF :",greaterThanCF)
     //successful
     numFre = numFre.reverse();
     let FrequencyD = numFre.map((value, index) => {
@@ -293,7 +293,7 @@ function Main() {
       return FrequencyD;
     });
 
-    //console.log("setFrequencyDensity : ", FrequencyD)
+    ////console.log("setFrequencyDensity : ", FrequencyD)
 
     //frequency work
     //frequency work
@@ -301,11 +301,11 @@ function Main() {
     //frequency work
     let RelativeF = numFre.map((value) => (value / totalF).toFixed(3));
     setRelativeFrequency(RelativeF);
-    //console.log("RelativeF :",RelativeF)
+    ////console.log("RelativeF :",RelativeF)
 
     let percentageF = RelativeF.map((value) => (value * 100).toFixed(2) + "%");
     setPercentageFrequency(percentageF);
-    //console.log("setPercentageFrequency :",percentageF)
+    ////console.log("setPercentageFrequency :",percentageF)
 
     let theA = middlePoint[parseInt(middlePoint.length / 2)];
     setA(theA);
@@ -325,10 +325,10 @@ function Main() {
 
     let theD = middlePoint.map((value) => {
       if (CPlus) {
-        //console.log("same distance range")
+        ////console.log("same distance range")
         return (value - theA) / classR[0];
       } else {
-        //console.log("NOT same distance range")
+        ////console.log("NOT same distance range")
         return value - theA;
       }
     });
@@ -363,14 +363,14 @@ function Main() {
     let TheX_;
     if (CPlus) {
       TheX_ = theA + (sumFrequencyXD / totalF) * classR[0];
-      //console.log("CPlus : True")
+      ////console.log("CPlus : True")
     } else {
       TheX_ = theA + sumFrequencyXD / totalF;
-      //console.log("CPlus : false")
+      ////console.log("CPlus : false")
     }
 
     setX_(TheX_);
-    //console.log(TheX_)
+    ////console.log(TheX_)
 
     //Real method
 
@@ -385,20 +385,17 @@ function Main() {
 
   return (
     <div className="">
-      <Router>
+     
         <Header mode={mode} setMode={setMode}/>
-        <Switch>
-          <Route exact path="/React-statistics-table-test">
-            <Input
+         {mode?<Input
               frequency={inputFrequency}
               classes={inputClasses}
               setStateF={updateFrequency}
               setStateC={updateClasses}
               send={classReady}
               clearAll={clearAll}
-            />
-          </Route>
-          <Route exact path="/React-statistics-table-test/exact">
+            />:
+         
             <InputType2
               frequency={inputFrequency}
               classes={inputClasses2}
@@ -420,9 +417,8 @@ function Main() {
               viewSmallest={viewSmallest}
               viewHighest={viewHighest}
 
-            />
-          </Route>
-        </Switch>
+            />}
+         
 
         {ready ? (
           <Table
@@ -451,7 +447,7 @@ function Main() {
         ) : (
           0
         )}
-      </Router>
+     
     </div>
   );
 }

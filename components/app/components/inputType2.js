@@ -65,7 +65,7 @@ export default function InputType2({viewHighest,viewSmallest,inputRange,updateIn
           </h3>
           <div className="inputs-area">
             {" "}
-            <textarea value={classes} onChange={(e)=>{setStateC(e.target.value)}} className="input" placeholder="10-20,20-30....">
+            <textarea value={classes} onChange={(e)=>{setStateC(e.target.value)}} className="input" placeholder="10,5,8,6,44,64,22,46...">
               
             </textarea>{" "}
           </div>
